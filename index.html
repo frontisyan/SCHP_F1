@@ -4,226 +4,578 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scuderia Ferrari HP | 2025 Season</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Racing+Sans+One&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ferrari-red: #FF2800;
+            --ferrari-yellow: #FFCC00;
+            --dark-bg: #1E1E1E;
+            --light-text: #FFFFFF;
+            --dark-text: #333333;
+            --hp-blue: #0096D6;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--light-text);
+            background-color: var(--dark-bg);
+            line-height: 1.6;
+        }
+        
+        .racing-font {
+            font-family: 'Racing Sans One', cursive;
+        }
+        
+
+
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.9) !important;
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar-brand img {
+            height: 50px;
+        }
+        
+        .navbar-brand .logo-text {
+            font-family: 'Racing Sans One', cursive;
+            font-size: 24px;
+            margin-left: 10px;
+            color: var(--ferrari-red);
+        }
+        
+        .nav-link {
+            color: var(--light-text) !important;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin: 0 10px;
+        }
+        
+        .nav-link:hover {
+            color: var(--ferrari-red) !important;
+        }
+        
+        .navbar-toggler {
+            border: 1px solid var(--ferrari-red);
+        }
+        
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 40, 0, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+        
+
+
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1560272564-c83bb66c1c1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--ferrari-red);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        .hero .season {
+            color: var(--ferrari-yellow);
+            font-weight: 700;
+        }
+        
+        .btn-ferrari {
+            background-color: var(--ferrari-red);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .btn-ferrari:hover {
+            background-color: var(--ferrari-yellow);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            color: var(--dark-text);
+        }
+        
+
+
+
+        .section-title {
+            text-align: center;
+            font-family: 'Racing Sans One', cursive;
+            font-size: 2.5rem;
+            margin: 60px 0 40px;
+            color: var(--ferrari-red);
+        }
+
+
+
+
+        .driver-card {
+            background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+        
+        .driver-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .driver-image {
+            height: 400px;
+            background-position: center;
+            background-size: cover;
+        }
+        
+        .driver-number {
+            display: inline-block;
+            background-color: var(--ferrari-red);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            line-height: 40px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+
+
+
+        .car-image {
+            max-width: 100%;
+            margin: 40px 0;
+            transform: perspective(800px) rotateY(10deg);
+            transition: transform 0.5s ease;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .car-image:hover {
+            transform: perspective(800px) rotateY(0);
+        }
+        
+        .spec-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--ferrari-red);
+            height: 100%;
+        }
+        
+        .spec-title {
+            color: var(--ferrari-yellow);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+
+
+
+        .race-card {
+            display: flex;
+            background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .race-date {
+            background-color: var(--ferrari-red);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 120px;
+        }
+        
+        .race-month {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        
+        .race-day {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+
+
+        .partner-logo {
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            max-width: 100%;
+            padding: 20px;
+        }
+        
+        .partner-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        
+
+
+
+        footer {
+            background-color: #0a0a0a;
+            padding: 60px 0 30px;
+            border-top: 1px solid #333;
+        }
+        
+        .footer-column h3 {
+            color: var(--ferrari-red);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #ccc;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--ferrari-yellow);
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--ferrari-red);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+
+
+        .bg-ferrari-dark {
+            background-color: #0a0a0a;
+        }
+        
+        .bg-ferrari-gradient {
+            background: linear-gradient(to bottom, #0a0a0a, #1e1e1e);
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div>
-                <img src="https://yandex.ru/images/search?pos=0&from=tabbar&img_url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2Fd%2Fdf%2FScuderia_Ferrari_HP_logo_24.svg%2F500px-Scuderia_Ferrari_HP_logo_24.svg.png&text=klogo+scuderia+ferrari+hp&rpt=simage&lr=39" alt="Ferrari Logo" width="50">
-                <span>SCUDERIA FERRARI</span>
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://avatars.mds.yandex.net/i?id=2d6d41b985a5b2ac270098e4ca26979c1c1393cc-5661753-images-thumbs&n=13" alt="Ferrari Logo">
+                <span class="logo-text">SCUDERIA FERRARI HP</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Car</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Calendar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Partners</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Shop</a>
+                    </li>
+                </ul>
             </div>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Team</a></li>
-                <li><a href="#">Car</a></li>
-                <li><a href="#">Calendar</a></li>
-                <li><a href="#">Partners</a></li>
-                <li><a href="#">Shop</a></li>
-            </ul>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
 
 
 
-    
-    <section>
-        <h1>SCUDERIA FERRARI HP</h1>
-        <p>Racing into the future with passion, performance, and precision</p>
-        <p>2025 Formula 1 World Championship</p>
-        <a href="#">Meet The Team</a>
+    <section class="hero">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-8 text-center">
+                    <h1 class="racing-font">SCUDERIA FERRARI <span style="color: var(--hp-blue)">HP</span></h1>
+                    <p class="lead">Racing into the future with passion, performance, and precision</p>
+                    <p class="season h4">2025 Formula 1 World Championship</p>
+                    <a href="#" class="btn btn-ferrari mt-4">Meet The Team</a>
+                </div>
+            </div>
+        </div>
     </section>
 
 
 
-
-
-    <section>
-        <h2>OUR DRIVERS</h2>
-        <div>
-            <article>
-                <img src="https://yandex.ru/images/search?pos=5&from=tabbar&img_url=https%3A%2F%2Fstorage.googleapis.com%2Ffp-media%2F1%2F2024%2F02%2FLeclerc.jpg&text=chari+lecler+2025&rpt=simage&lr=39" alt="Charles Leclerc" width="300">
-                <div>16</div>
-                <h3>Charles Leclerc</h3>
-                <p>Monegasque racing driver, driver of the Ferrari Formula 1 team</p>
-            </article>
-            <article>
-                <img src="https://yandex.ru/images/search?text=lewis+hamilton+ferrari+wallpaper+2025&pos=6&rpt=simage&img_url=https%3A%2F%2Fimg-s-msn-com.akamaized.net%2Ftenant%2Famp%2Fentityid%2FAA1zzzMr.img%3Fw%3D1600%26h%3D1067%26m%3D4%26q%3D100&from=tabbar&lr=39" alt="Lewis Hamilton" width="300">
-                <div>44</div>
-                <h3>Lewis Hamilton</h3>
-                <p>Seven-time Formula 1 world champion (2008 with McLaren, 2014, 2015, 2017-2020 with Mercedes)</p>
-            </article>
+    <section class="py-5 bg-ferrari-dark">
+        <div class="container py-5">
+            <h2 class="section-title">OUR DRIVERS</h2>
+            <div class="row g-4">
+                <div class="col-12 col-md-6">
+                    <div class="driver-card">
+                        <div class="driver-image" style="background-image: url('https://charlesleclerc.com/wp-content/uploads/2025/02/Leclerc-About-01-Intro.jpg');"></div>
+                        <div class="p-4 text-center">
+                            <div class="driver-number">16</div>
+                            <h3 class="driver-name">CHARLES LECLERC</h3>
+                            <p>Monegasque racing prodigy with exceptional talent and determination</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="driver-card">
+                        <div class="driver-image" style="background-image: url('https://ferrari-view.thron.com/api/xcontents/resources/delivery/getThumbnail/ferrari/0x0/bbeeed6a-c439-40da-885a-927e79403460.jpg?v=150');"></div>
+                        <div class="p-4 text-center">
+                            <div class="driver-number">44</div>
+                            <h3 class="driver-name">LEWIS HAMILTON</h3>
+                            <p>Seven-time Formula 1 world champion (2008 — with McLaren, 2014, 2015, 2017–2020 — with Mercedes)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
 
 
 
-    <section>
-        <h2>THE FERRARI SF-25</h2>
-        <p>Revolutionary engineering meets iconic design</p>
-        <img src="https://www.wsupercars.com/wallpapers-regular/Formula-1/Scuderia-Ferrari/2025-Formula1-Ferrari-SF-25-001-1080.jpg " alt="Ferrari SF-25" width="600">
-        
-
-
-
-
-        <dl>
-            <div>
-                <dt>POWER UNIT</dt>
-                <dd>Ferrari SF-25 1.6L V6 Turbo Hybrid</dd>
-            </div>
-            <div>
-                <dt>TRANSMISSION</dt>
-                <dd>8-speed semi-automatic carbon titanium gearbox</dd>
-            </div>
-            <div>
-                <dt>CHASSIS</dt>
-                <dd>Carbon fiber and honeycomb composite monocoque</dd>
-            </div>
-            <div>
-                <dt>WEIGHT</dt>
-                <dd>798 kg (including driver)</dd>
-            </div>
-        </dl>
-    </section>
-
-
-
-
-
-    <section>
-        <h2>2025 RACE CALENDAR</h2>
-        
-
-
-
-
-        <div>
-            <article>
-                <time>MAR 15</time>
-                <div>
-                    <h3>Bahrain Grand Prix</h3>
-                    <div>Bahrain International Circuit</div>
-                </div>
-            </article>
+    <section class="py-5 bg-ferrari-gradient">
+        <div class="container py-5">
+            <h2 class="section-title">THE FERRARI SF-25</h2>
+            <p class="text-center lead">Revolutionary engineering meets iconic design</p>
             
-
-
-
-
-            <article>
-                <time>MAR 29</time>
-                <div>
-                    <h3>Australian Grand Prix</h3>
-                    <div>Albert Park Circuit</div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-10">
+                    <img src="https://www.wsupercars.com/wallpapers-regular/Formula-1/Scuderia-Ferrari/2025-Formula1-Ferrari-SF-25-001-1080.jpg " alt="Ferrari SF-25" class="car-image img-fluid">
                 </div>
-            </article>
+            </div>
             
-
-
-
-
-            <article>
-                <time>APR 12</time>
-                <div>
-                    <h3>Chinese Grand Prix</h3>
-                    <div>Shanghai International Circuit</div>
+            <div class="row g-4 mt-4">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="spec-card">
+                        <h4 class="spec-title">POWER UNIT</h4>
+                        <p>Ferrari 066/12 1.6L V6 Turbo Hybrid</p>
+                    </div>
                 </div>
-            </article>
-            
-
-
-
-
-            <article>
-                <time>MAY 10</time>
-                <div>
-                    <h3>Miami Grand Prix</h3>
-                    <div>Miami International Autodrome</div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="spec-card">
+                        <h4 class="spec-title">TRANSMISSION</h4>
+                        <p>8-speed semi-automatic carbon titanium gearbox</p>
+                    </div>
                 </div>
-            </article>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="spec-card">
+                        <h4 class="spec-title">CHASSIS</h4>
+                        <p>Carbon fiber and honeycomb composite monocoque</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="spec-card">
+                        <h4 class="spec-title">WEIGHT</h4>
+                        <p>798 kg (including driver)</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
 
 
 
-    <section>
-        <h2>Ferrari SF-25 Video</h2>
-        <video width="640" height="360" controls>
-            <source src="media/videos/Ferrari.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </section>
-
-
-
-
-
-    
-    <section>
-        <h2>Ferrari Engine Sound</h2>
-        <audio controls>
-            <source src="media/audio/SFCHP.mp3" type="audio/mp3">
-            Your browser does not support the audio element.
-        </audio>
-    </section>
-
-
-
-
-
-    <section>
-        <h2>OUR PARTNERS</h2>
-        <div>
-            <img src="//avatars.mds.yandex.net/i?id=f41b2a6174dd5772156bde74a5bb92f9907cdbad-4888127-images-thumbs&n=13" alt="HP" width="100">
-            <img src="//avatars.mds.yandex.net/i?id=234fb6eef9c9b0b251ac56ba3d7319aebcfc9cdf-5473816-images-thumbs&n=13" alt="Ray-Ban" width="100">
-            <img src="https://www.mahle.com/en/about-mahle/locations/locations.jsp" alt="MANLE" width="100">
-            <img src="//yastatic.net/images-thumbs/_/8cS_MbHl6VBweqVjWeI-eNy0tzE.ico" alt="Shell" width="100">
-            <img src="//avatars.mds.yandex.net/i?id=b101e2534a151037f835852034559ed1b39d128e-15381077-images-thumbs&n=13" alt="MAHLE" width="100">
+    <section class="py-5">
+        <div class="container py-5">
+            <h2 class="section-title">2025 RACE CALENDAR</h2>
+            
+            <div class="race-card">
+                <div class="race-date">
+                    <span class="race-month">MAR</span>
+                    <span class="race-day">15</span>
+                </div>
+                <div class="p-3">
+                    <h3 class="race-name">Bahrain Grand Prix</h3>
+                    <div class="race-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Bahrain International Circuit</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="race-card">
+                <div class="race-date">
+                    <span class="race-month">MAR</span>
+                    <span class="race-day">29</span>
+                </div>
+                <div class="p-3">
+                    <h3 class="race-name">Australian Grand Prix</h3>
+                    <div class="race-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Albert Park Circuit</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="race-card">
+                <div class="race-date">
+                    <span class="race-month">APR</span>
+                    <span class="race-day">12</span>
+                </div>
+                <div class="p-3">
+                    <h3 class="race-name">Chinese Grand Prix</h3>
+                    <div class="race-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Shanghai International Circuit</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="race-card">
+                <div class="race-date">
+                    <span class="race-month">MAY</span>
+                    <span class="race-day">10</span>
+                </div>
+                <div class="p-3">
+                    <h3 class="race-name">Miami Grand Prix</h3>
+                    <div class="race-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Miami International Autodrome</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
+
+
+
+
+    <section class="py-5 bg-ferrari-dark">
+        <div class="container py-5">
+            <h2 class="section-title">OUR PARTNERS</h2>
+            <div class="row g-4 align-items-center">
+                <div class="col-6 col-md-4 col-lg-2">
+                    <img src="https://logos-world.net/wp-content/uploads/2020/11/HP-Logo.png" alt="HP" class="img-fluid partner-logo">
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <img src="https://i.pinimg.com/originals/46/d2/68/46d268653a36dc8b2cdeddd258440c03.jpg" alt="IBM" class="img-fluid partner-logo">
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <img src="./media/Photos/Puma.webp" alt="Puma" class="img-fluid partner-logo">
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <img src="./media/Photos/Shell.webp" alt="Shell" class="img-fluid partner-logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="main-photo-section">
+    <div class="container-fluid p-0">
+        <img src="./media/Photos/Baku" alt="Baku" class="img-fluid w-100">
+    </div>
+</section>
 
 
 
     <footer>
-        <div>
-            <section>
-                <h3>SCUDERIA FERRARI</h3>
-                <p>Passion for performance, obsession with innovation, and a relentless pursuit of victory.</p>
-                <nav>
-                    <a href="#">Facebook</a>
-                    <a href="#">Twitter</a>
-                    <a href="#">Instagram</a>
-                    <a href="#">YouTube</a>
-                </nav>
-            </section>
-
-
-            <nav>
-                <h3>QUICK LINKS</h3>
-                <a href="#">Team</a>
-                <a href="#">Drivers</a>
-                <a href="#">Car</a>
-                <a href="#">Calendar</a>
-                <a href="#">Shop</a>
-            </nav>
-
-
-            <address>
-                <h3>CONTACT US</h3>
-                <p>Ferrari S.p.A. - Via Abetone Inferiore, 4 - 41053 Maranello (MO) - Italy</p>
-                <p>Email: <a href="mailto:media@ferrari.com">media@ferrari.com</a></p>
-                <p>Phone: <a href="tel:+390555544221">+39 0555 544221</a></p>
-            </address>
-        </div>
-
-
-        <div>
-            <p>&copy; 2025 Scuderia Ferrari. All rights reserved.</p>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-12 col-md-4">
+                    <h3>SCUDERIA FERRARI</h3>
+                    <p>Passion for performance, obsession with innovation, and a relentless pursuit of victory.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <h3>QUICK LINKS</h3>
+                    <a href="#">Team</a>
+                    <a href="#">Drivers</a>
+                    <a href="#">Car</a>
+                    <a href="#">Calendar</a>
+                    <a href="#">Shop</a>
+                </div>
+                <div class="col-12 col-md-4">
+                    <h3>CONTACT US</h3>
+                    <p>Ferrari S.p.A. - Via Abetone Inferiore, 4 - 41053 Maranello (MO) - Italy</p>
+                    <p>Email: media@ferrari.com</p>
+                    <p>Phone: +39 0536 949111</p>
+                </div>
+            </div>
+            <div class="copyright mt-4">
+                <p>&copy; 2025 Scuderia Ferrari. All rights reserved. | Designed with passion for Ferrari F1 Team</p>
+            </div>
         </div>
     </footer>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
